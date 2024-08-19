@@ -1,66 +1,108 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding: 20px; /* Padding for smaller screens */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 .color-picker-tool {
-    background-color: #fff;
+    background-color: #000; /* Dark grey background for the tool */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0.1); /* White shadow for contrast */
     text-align: center;
     max-width: 400px;
     width: 100%;
+    box-sizing: border-box;
+    color: #fff; /* White text within the tool */
 }
 
 .color-display {
     width: 100%;
     height: 150px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #555; /* Darker grey border */
     border-radius: 5px;
 }
 
 .color-input {
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #555; /* Darker grey background */
+    color: #fff; /* White text */
+    border: 1px solid #777; /* Medium grey border */
 }
 
 .color-values {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column; /* Stack the elements on smaller screens */
+    align-items: stretch; /* Stretch items to full width */
+    gap: 10px; /* Add spacing between items */
 }
 
 .hex-value, .rgb-value {
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Space out the elements */
 }
 
 label {
     margin-right: 10px;
+    flex-shrink: 0; /* Prevent the label from shrinking */
+    color: #fff; /* White text for labels */
 }
 
 input[type="text"] {
-    width: 120px;
+    flex-grow: 1; /* Allow the input to grow and fill the available space */
     padding: 5px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #777; /* Medium grey border */
     border-radius: 5px;
+    box-sizing: border-box;
+    min-width: 0; /* Prevent overflow in flexbox */
+    background-color: #555; /* Darker grey background */
+    color: #fff; /* White text */
 }
 
 button {
     padding: 5px 10px;
     border: none;
     background-color: #007BFF;
-    color: white;
+    color: #fff; /* White text */
     border-radius: 5px;
     cursor: pointer;
+    white-space: nowrap; /* Prevent button text from wrapping */
+    margin-left: 10px; /* Add space between input and button */
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+/* Media Queries for responsiveness */
+@media (min-width: 768px) {
+    .color-values {
+        flex-direction: row; /* Side by side layout for larger screens */
+        justify-content: space-between;
+    }
+
+    .hex-value, .rgb-value {
+        justify-content: flex-start;
+    }
+
+    input[type="text"] {
+        width: auto; /* Allow auto width on larger screens */
+    }
+
+    button {
+        margin-left: 20px; /* Increase spacing on larger screens */
+    }
 }
